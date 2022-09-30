@@ -290,6 +290,7 @@ name = "sshpass-rs"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "cfg-if",
  "clap",
  "console",
  "expectrl",

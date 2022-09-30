@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 use clap::Parser;
 use console::Term;
 use expectrl::{check, spawn, stream::stdin::Stdin, Error};
@@ -35,7 +35,6 @@ fn main() -> Result<()> {
     };
 
     let mut ssh = spawn(&command).expect(&format!("Unknown command: {:?}", command));
-    let term = Term::stdout();
 
     loop {
         match check!(
@@ -44,6 +43,7 @@ fn main() -> Result<()> {
                 ssh.send_line("yes")?;
             },
             _ = "password:" => {
+                print!("password:");
                 if let Some(password) = password {
                     ssh.send_line(password)?;
                 } else {
@@ -57,14 +57,18 @@ fn main() -> Result<()> {
         };
     }
 
+    let _term = Term::stdout();
     let mut stdin = Stdin::open().expect("Failed to create stdin");
     ssh.interact(&mut stdin, stdout())
-        .on_idle(|state| {
-            let (rows, cols) = term.size();
-            state
-                .session
-                .set_window_size(cols, rows)
-                .expect("Update window size failed");
+        .on_idle(|_state| {
+            #[cfg(not(target_os = "windows"))]
+            {
+                let (rows, cols) = _term.size();
+                _state
+                    .session
+                    .set_window_size(cols, rows)
+                    .expect("Update window size failed");
+            }
             Ok(())
         })
         .spawn()

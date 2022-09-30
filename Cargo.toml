@@ -10,3 +10,4 @@ expectrl = "0.6.0"
 console = "0.15.1"
 clap = { version = "4.0.4", features = ["derive"] }
 anyhow = "*"
+cfg-if = "1.0.0"
