@@ -2,6 +2,11 @@
 name = "sshpass-rs"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+repository = "https://github.com/fantasyzhjk/sshpass-rs"
+homepage = "https://github.com/fantasyzhjk/sshpass-rs"
+keywords = ["expect", "ssh", "terminal", "automation"]
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -9,5 +14,5 @@ edition = "2021"
 expectrl = "0.6.0"
 console = "0.15.1"
 clap = { version = "4.0.4", features = ["derive"] }
-anyhow = "*"
+anyhow = "1.0.65"
 cfg-if = "1.0.0"
