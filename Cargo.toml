@@ -1,12 +1,14 @@
 [package]
 name = "sshpass-rs"
 version = "0.1.0"
+authors = ["fantasyzhjk <fantasyzhjk@outlook.com>"]
 edition = "2021"
 license = "MIT"
 repository = "https://github.com/fantasyzhjk/sshpass-rs"
 homepage = "https://github.com/fantasyzhjk/sshpass-rs"
 keywords = ["expect", "ssh", "terminal", "automation"]
 readme = "README.md"
+description = "A sshpass implementation in Rust"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
